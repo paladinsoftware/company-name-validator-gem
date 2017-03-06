@@ -5,7 +5,7 @@ require 'company_validator/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "company_validator"
-  spec.version       = CompanyValidator::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["Przemek Hocke"]
   spec.email         = ["shem@paladinsoftware.com"]
 
@@ -21,8 +21,6 @@ Gem::Specification.new do |spec|
   end
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"

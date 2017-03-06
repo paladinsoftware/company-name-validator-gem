@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 class TestUser < TestModel
-  validates :company, company: true
+  validates :company_name, company: true
 end
 
 class TestComapny < TestModel
@@ -15,14 +15,15 @@ describe CompanyValidator do
       [
         "Bent Pixels",
         "2btube",
-        "PaladinSoftware"
+        "123oftware",
+        "Paladin Software"
       ].each do |name|
 
-        it "#{name.inspect} should be valid" do
-          expect(TestUser.new(:company => name)).to be_valid
+        it "#{name.inspect} should be valid user company name" do
+          expect(TestUser.new(:company_name => name)).to be_valid
         end
 
-        it "#{name.inspect} should be valid in strict_mode" do
+        it "#{name.inspect} should be valid company name" do
           expect(TestComapny.new(:name => name)).to be_valid
         end
 
@@ -34,23 +35,21 @@ describe CompanyValidator do
 
     context "given the invalid names" do
       [
-        "",
         "BentPixles",
         "PALADINDSOFTWARE",
         "123123",
-
       ].each do |name|
 
-        it "#{name.inspect} should not be valid" do
-          expect(TestUser.new(:company => name)).not_to be_valid
+        it "#{name.inspect} should not be valid user company name" do
+          expect(TestUser.new(:company_name => name)).not_to be_valid
         end
 
-        it "#{name.inspect} should not be valid in strict_mode" do
+        it "#{name.inspect} should not be valid company name" do
           expect(TestComapny.new(:name => name)).not_to be_valid
         end
 
         it "#{name.inspect} should not match the regexp" do
-          expect(name =~ CompanyValidator.regexp).to be_falsy
+          expect(name =~ CompanyValidator::REGEXP).to be_falsy
         end
 
 

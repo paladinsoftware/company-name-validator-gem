@@ -1,12 +1,14 @@
 class CompanyValidator < ActiveModel::EachValidator
   @@default_options = {}
 
-  REGEXP = %r{
-  (([[:upper:]]|\d)([[:lower:]]|\d)+) # start with Uppper case char or digit, followed by digits or lowercase chars
-  ( ([[:upper:]])([[:lower:]]|\d)+)*  # zero or more groups starting with space and upper case chars followed by lowecase chars
-  }x
+REGEXP = %r{
+(^([A-Z]|\d+)([a-z])+)+ # start with Uppper case char or digits, followed by lowercase chars
+(\s([A-Z])[a-z]+)?*$  # zero or more groups starting with space and upper case chars followed by lowecase chars
+}x
 
-  def self.valid?(value)
+# REGEXP = /(([A-Z]|\d+)([a-z])+)( ([A-Z])([a-z]|\d)+)*/
+
+  def self.valid?(value, options = {})
     !!value.match(REGEXP)
   end
 
