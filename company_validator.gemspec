@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["shem@paladinsoftware.com"]
 
   spec.summary       = %q{To keep company names unified}
-  spec.homepage      = "https://github.com/paladinsoftware/"
+  spec.homepage      = "https://github.com/paladinsoftware/company_validator"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -22,11 +22,10 @@ Gem::Specification.new do |spec|
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency 'active_model', '~> 4.2', '>= 4.2'
+
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency 'active_model', '~> 4.2', '>= 4.2'
-
-  spec.add_runtime_dependency 'active_model', '~> 4.2', '>= 4.2'
 
 end
